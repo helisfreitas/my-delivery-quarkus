@@ -1,5 +1,7 @@
 package dev.helis.registration.rest.dto;
 
+import dev.helis.registration.validation.OnlyCharacterAndPunctuation;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,6 +16,7 @@ public class RestaurantRequest implements java.io.Serializable {
 
     @NotBlank
     @Size(min = 5, max = 100)
+    @OnlyCharacterAndPunctuation
     private String name;
 
     @NotNull  
