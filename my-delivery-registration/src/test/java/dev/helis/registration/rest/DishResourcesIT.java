@@ -33,7 +33,7 @@ class DishResourcesIT {
     
 
     @Test
-    @DataSet(value = "/DishResourcesIt/dishes-scenario-2.yml")
+    @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @Transactional
     void shouldFindAllDishesFromRestaurant() {
 
@@ -47,7 +47,7 @@ class DishResourcesIT {
     }
 
     @Test
-    @DataSet(value = "/DishResourcesIt/dishes-scenario-2.yml")
+    @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @Transactional
     void shouldFindByIdDishesFromRestaurant() {
 
@@ -61,8 +61,8 @@ class DishResourcesIT {
     }
 
     @Test
-    @DataSet(value = "/DishResourcesIt/dishes-scenario-2.yml")
-    @ExpectedDataSet(value = "/DishResourcesIt/dishes-scenario-1.yml")
+    @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
+    @ExpectedDataSet(value = "/DishResourcesIT/dishes-scenario-1.yml")
     @Transactional
     void shouldDeleteByIdDishesFromRestaurant() {
 
@@ -74,8 +74,8 @@ class DishResourcesIT {
     }
 
     @Test
-    @DataSet(value = "/DishResourcesIt/dishes-scenario-1.yml")
-    @ExpectedDataSet(value = "/DishResourcesIt/dishes-scenario-2.yml")
+    @DataSet(value = "/DishResourcesIT/dishes-scenario-1.yml")
+    @ExpectedDataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @Transactional
     void shouldCreateDishesFromRestaurant() {
         DishRequest request = new DishRequest();
@@ -114,8 +114,8 @@ class DishResourcesIT {
     }
 
     @Test
-    @DataSet(value = "/DishResourcesIt/dishes-scenario-2.yml")
-    @ExpectedDataSet(value = "/DishResourcesIt/dishes-scenario-2-modified.yml")
+    @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
+    @ExpectedDataSet(value = "/DishResourcesIT/dishes-scenario-2-modified.yml")
     @Transactional
     void shouldUpdateNameDishesFromRestaurant() {
         DishRequest request = new DishRequest();
