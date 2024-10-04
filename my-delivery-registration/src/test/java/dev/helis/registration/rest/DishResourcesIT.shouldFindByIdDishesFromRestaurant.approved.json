@@ -1,0 +1,8 @@
+{
+  "category": "MAIN_COURSE",
+  "id": 23,
+  "isAvailable": true,
+  "name": "Pizza Marguerita",
+  "price": 12.00,
+  "restaurant": 1
+}
