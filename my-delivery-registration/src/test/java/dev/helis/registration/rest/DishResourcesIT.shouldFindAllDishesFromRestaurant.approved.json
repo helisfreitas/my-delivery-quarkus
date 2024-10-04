@@ -1,0 +1,18 @@
+[
+  {
+    "category": "MAIN_COURSE",
+    "id": 1,
+    "isAvailable": true,
+    "name": "X-Burguer",
+    "price": 9.99,
+    "restaurant": 1
+  },
+  {
+    "category": "MAIN_COURSE",
+    "id": 23,
+    "isAvailable": true,
+    "name": "Pizza Marguerita",
+    "price": 12.00,
+    "restaurant": 1
+  }
+]
