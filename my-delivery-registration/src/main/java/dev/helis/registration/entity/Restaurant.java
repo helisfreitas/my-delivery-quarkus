@@ -2,6 +2,8 @@ package dev.helis.registration.entity;
 
 import java.time.LocalDate;
 
+import dev.helis.registration.validation.OnlyCharacterAndPunctuation;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class Restaurant  extends  PanacheEntityBase {
      public String owner;
 
     @NotBlank
+    @OnlyCharacterAndPunctuation
     public String name;
 
     @ManyToOne(cascade = CascadeType.ALL)    

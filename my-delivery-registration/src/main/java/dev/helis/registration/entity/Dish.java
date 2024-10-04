@@ -25,8 +25,10 @@ public class Dish extends PanacheEntityBase {
     public Long id;
 
     @NotBlank
+    @OnlyCharacterAndPunctuation
     public String name;
 
+    @OnlyCharacterAndPunctuation
     public String description;
 
     @NotNull

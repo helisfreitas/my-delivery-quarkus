@@ -1,0 +1,10 @@
+restaurant:
+  - id: 1
+    name: New Flavor
+dish:
+  - id: 23
+    name: Pizza Marguerita
+    price: 12.00
+    restaurant_id: 1
+    category: MAIN_COURSE
+    isAvailable: true
