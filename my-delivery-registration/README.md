@@ -6,6 +6,8 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 
 ## Running the application in dev mode
 create docker-compose.yml file with content bellow
+
+```
  db:
     container_name: quarkusdev-postgresdb
     image: postgres:latest
@@ -17,7 +19,9 @@ create docker-compose.yml file with content bellow
       POSTGRES_PASSWORD: 1234
       POSTGRES_USER: user
       POSTGRES_DB: app
-run docker composer
+
+```
+run the docker composer file
 
 ```shell script
 docker-compose up
