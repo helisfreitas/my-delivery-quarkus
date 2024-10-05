@@ -1,0 +1,9 @@
+location:
+  - id: 123
+    longitude: 33.0
+    latitude: 33.0
+restaurant:
+  - id: 21
+    name: New Flavor
+    owner: Manuel
+    location_id: 123
