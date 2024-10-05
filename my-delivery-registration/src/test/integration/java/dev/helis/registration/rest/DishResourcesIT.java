@@ -15,7 +15,7 @@ import com.github.database.rider.core.api.configuration.Orthography;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 
-import dev.helis.registration.RegistrationTestLifecycleManager;
+import dev.helis.helper.RegistrationTestLifecycleManager;
 import dev.helis.registration.entity.Category;
 import dev.helis.registration.rest.dto.DishRequest;
 import io.quarkus.test.common.QuarkusTestResource;

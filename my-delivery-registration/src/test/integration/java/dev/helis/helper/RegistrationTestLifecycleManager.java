@@ -1,4 +1,4 @@
-package dev.helis.registration;
+package dev.helis.helper;
 
 import java.util.HashMap;
 import java.util.Map;
