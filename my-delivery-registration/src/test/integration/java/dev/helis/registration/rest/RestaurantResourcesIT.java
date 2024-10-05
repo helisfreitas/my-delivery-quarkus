@@ -37,5 +37,4 @@ class RestaurantResourcesIT {
 
         JsonApprovals.verifyJson(response);
     }
-
 }

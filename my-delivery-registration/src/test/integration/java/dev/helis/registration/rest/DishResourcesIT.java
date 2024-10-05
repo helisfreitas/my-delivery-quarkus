@@ -94,7 +94,6 @@ class DishResourcesIT {
     }
 
     @Test
-    @Transactional
     void shouldShowErrorOnCreateDishesFromRestaurantWithoutName() {
 
         String json = "{\"category\":\"MAIN_COURSE\",\"isAvailable\":true,\"price\":9.99}";
