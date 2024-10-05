@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Quality Java CI with Maven
+name: Run Integration Tests
 
 on:
   push:
