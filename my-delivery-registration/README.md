@@ -5,6 +5,23 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
 ## Running the application in dev mode
+create docker-compose.yml file with content bellow
+ db:
+    container_name: quarkusdev-postgresdb
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      # NOTE: POSTGRES_DB/USER/PASSWORD should match values in app container
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: user
+      POSTGRES_DB: app
+run docker composer
+
+```shell script
+docker-compose up
+```
 
 You can run your application in dev mode that enables live coding using:
 
