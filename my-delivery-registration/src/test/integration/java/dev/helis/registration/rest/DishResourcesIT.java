@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import org.approvaltests.Approvals;
 import org.approvaltests.JsonApprovals;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 
 import com.github.database.rider.cdi.api.DBRider;
 import com.github.database.rider.core.api.configuration.DBUnit;
@@ -16,21 +15,24 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 
 import dev.helis.helper.RegistrationTestLifecycleManager;
+import dev.helis.helper.annotation.ErrorTest;
+import dev.helis.helper.annotation.IntegrationRestTest;
+import dev.helis.helper.annotation.SuccessTest;
 import dev.helis.registration.entity.Category;
 import dev.helis.registration.rest.dto.DishRequest;
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.transaction.Transactional;
 
-@DBRider
-@DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE, alwaysCleanBefore = true)
 @QuarkusTest
 @QuarkusTestResource(RegistrationTestLifecycleManager.class)
-@Tag("integration")
+@DBRider
+@DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE, alwaysCleanBefore = true)
+@IntegrationRestTest
 @Tag("dish-feature")
 class DishResourcesIT {
 
-    @Test
+    @SuccessTest
     @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @Transactional
     void shouldFindAllDishesFromRestaurant() {
@@ -44,7 +46,7 @@ class DishResourcesIT {
         JsonApprovals.verifyJson(response);
     }
 
-    @Test
+    @SuccessTest
     @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @Transactional
     void shouldFindByIdDishesFromRestaurant() {
@@ -58,7 +60,7 @@ class DishResourcesIT {
         JsonApprovals.verifyJson(response);
     }
 
-    @Test
+    @SuccessTest
     @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @ExpectedDataSet(value = "/DishResourcesIT/dishes-scenario-1.yml")
     @Transactional
@@ -71,7 +73,7 @@ class DishResourcesIT {
 
     }
 
-    @Test
+    @SuccessTest
     @DataSet(value = "/DishResourcesIT/dishes-scenario-1.yml")
     @ExpectedDataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @Transactional
@@ -93,7 +95,7 @@ class DishResourcesIT {
 
     }
 
-    @Test
+    @ErrorTest
     void shouldShowErrorOnCreateDishesFromRestaurantWithoutName() {
 
         String json = "{\"category\":\"MAIN_COURSE\",\"isAvailable\":true,\"price\":9.99}";
@@ -109,7 +111,7 @@ class DishResourcesIT {
 
     }
 
-    @Test
+    @SuccessTest
     @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
     @ExpectedDataSet(value = "/DishResourcesIT/dishes-scenario-2-modified.yml")
     @Transactional
