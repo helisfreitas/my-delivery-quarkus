@@ -1,0 +1,3 @@
+[submodule "my-delivery-frontend-angular"]
+	path = my-delivery-frontend-angular
+	url = git@github.com:helisfreitas/my-delivery-frontend-angular.git
