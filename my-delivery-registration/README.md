@@ -8,6 +8,10 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 create docker-compose.yml file with content bellow
 
 ```
+volumes:
+  postgres-data:
+
+services:
  db:
     container_name: quarkusdev-postgresdb
     image: postgres:latest
