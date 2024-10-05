@@ -24,10 +24,10 @@ import jakarta.validation.Payload;
 @Normalized
 public @interface OnlyCharacterAndPunctuation {
 
-	String message() default "{dev.helis.registration.validation.OnlyCharacterAndPunctuation.message}";
-    
+    String message() default "{dev.helis.registration.validation.OnlyCharacterAndPunctuation.message}";
+
     Class<?>[] groups() default {};
-    
+
     Class<? extends Payload>[] payload() default {};
 
 }

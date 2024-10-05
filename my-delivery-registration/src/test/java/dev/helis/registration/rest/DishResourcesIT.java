@@ -1,6 +1,5 @@
 package dev.helis.registration.rest;
 
-
 import static io.restassured.RestAssured.given;
 
 import java.math.BigDecimal;
@@ -24,13 +23,12 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.transaction.Transactional;
 
 @DBRider
-@DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE,  alwaysCleanBefore=true)
+@DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE, alwaysCleanBefore = true)
 @QuarkusTest
 @QuarkusTestResource(RegistrationTestLifecycleManager.class)
 @Tag("integration")
 @Tag("dish-feature")
 class DishResourcesIT {
-    
 
     @Test
     @DataSet(value = "/DishResourcesIT/dishes-scenario-2.yml")
@@ -41,9 +39,9 @@ class DishResourcesIT {
                 .when().get(ResourcePaths.DISHES, 1)
                 .then()
                 .statusCode(200)
-                .extract().asString();  
+                .extract().asString();
 
-       JsonApprovals.verifyJson(response);
+        JsonApprovals.verifyJson(response);
     }
 
     @Test
@@ -52,12 +50,12 @@ class DishResourcesIT {
     void shouldFindByIdDishesFromRestaurant() {
 
         String response = given()
-                .when().get(ResourcePaths.DISHES+"/{id}", 1, 23)
+                .when().get(ResourcePaths.DISHES + "/{id}", 1, 23)
                 .then()
                 .statusCode(200)
-                .extract().asString();  
+                .extract().asString();
 
-       JsonApprovals.verifyJson(response);
+        JsonApprovals.verifyJson(response);
     }
 
     @Test
@@ -67,9 +65,9 @@ class DishResourcesIT {
     void shouldDeleteByIdDishesFromRestaurant() {
 
         given()
-            .when().delete(ResourcePaths.DISHES+"/{id}", 1, 1)
-            .then()
-            .statusCode(204);
+                .when().delete(ResourcePaths.DISHES + "/{id}", 1, 1)
+                .then()
+                .statusCode(204);
 
     }
 
@@ -85,11 +83,11 @@ class DishResourcesIT {
         request.setIsAvailable(Boolean.TRUE);
 
         String response = given()
-            .when().contentType("application/json").body(request)
-            .post(ResourcePaths.DISHES, 1)
-            .then()
-            .statusCode(201)
-            .extract().header("location");
+                .when().contentType("application/json").body(request)
+                .post(ResourcePaths.DISHES, 1)
+                .then()
+                .statusCode(201)
+                .extract().header("location");
 
         Approvals.verify(response);
 
@@ -98,16 +96,15 @@ class DishResourcesIT {
     @Test
     @Transactional
     void shouldShowErrorOnCreateDishesFromRestaurantWithoutName() {
- 
+
         String json = "{\"category\":\"MAIN_COURSE\",\"isAvailable\":true,\"price\":9.99}";
 
-
         String response = given()
-            .when().contentType("application/json").body(json)
-            .post(ResourcePaths.DISHES, 1)
-            .then()
-            .statusCode(400)
-            .extract().response().body().asString();
+                .when().contentType("application/json").body(json)
+                .post(ResourcePaths.DISHES, 1)
+                .then()
+                .statusCode(400)
+                .extract().response().body().asString();
 
         JsonApprovals.verifyJson(response);
 
@@ -125,10 +122,10 @@ class DishResourcesIT {
         request.setIsAvailable(Boolean.TRUE);
 
         given()
-            .when().contentType("application/json").body(request)
-            .put(ResourcePaths.DISHES+"/{id}", 1, 1)
-            .then()
-            .statusCode(204);
+                .when().contentType("application/json").body(request)
+                .put(ResourcePaths.DISHES + "/{id}", 1, 1)
+                .then()
+                .statusCode(204);
 
     }
 

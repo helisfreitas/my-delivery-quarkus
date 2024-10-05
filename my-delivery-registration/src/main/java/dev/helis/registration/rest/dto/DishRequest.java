@@ -9,7 +9,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-
 public class DishRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -81,11 +80,10 @@ public class DishRequest implements Serializable {
         this.isAvailable = isAvailable;
     }
 
-
     @Override
     public String toString() {
-        return "Dish [name=" + name + ", price=" + price + ", category=" + category 
+        return "Dish [name=" + name + ", price=" + price + ", category=" + category
                 + "]";
-    }    
+    }
 
 }

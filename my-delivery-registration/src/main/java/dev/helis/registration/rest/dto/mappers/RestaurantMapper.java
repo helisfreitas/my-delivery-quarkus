@@ -16,6 +16,7 @@ public class RestaurantMapper {
     }
 
     public static Restaurant mapToEntity(RestaurantRequest restaurant) {
-        return new Restaurant(restaurant.getName(), restaurant.getOwner(), new Location(restaurant.getLocation().getLongitude(), restaurant.getLocation().getLatitude()));
+        return new Restaurant(restaurant.getName(), restaurant.getOwner(),
+                new Location(restaurant.getLocation().getLongitude(), restaurant.getLocation().getLatitude()));
     }
 }

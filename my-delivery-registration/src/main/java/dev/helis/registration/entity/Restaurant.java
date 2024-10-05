@@ -15,33 +15,33 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
-public class Restaurant  extends  PanacheEntityBase {
-   
+public class Restaurant extends PanacheEntityBase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     @NotBlank
-     public String owner;
+    public String owner;
 
     @NotBlank
     @OnlyCharacterAndPunctuation
     public String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)    
+    @ManyToOne(cascade = CascadeType.ALL)
     public Location location;
 
     @PastOrPresent
     public LocalDate creationDate;
 
-    @PastOrPresent  
+    @PastOrPresent
     public LocalDate lastUpdate;
 
     public Restaurant() {
 
         // Default constructor
     }
- 
+
     public Restaurant(String name, String owner, Location location) {
         this.owner = owner;
         this.name = name;

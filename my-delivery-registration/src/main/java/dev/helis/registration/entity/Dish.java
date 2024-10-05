@@ -83,6 +83,6 @@ public class Dish extends PanacheEntityBase {
     public String toString() {
         return "Dish [name=" + name + ", price=" + price + ", category=" + category + ", restaurant=" + restaurant
                 + "]";
-    }    
+    }
 
 }

@@ -6,7 +6,6 @@ import java.net.URL;
 
 import dev.helis.registration.entity.Category;
 
-
 public class DishResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,7 +25,6 @@ public class DishResponse implements Serializable {
     private Boolean isAvailable;
 
     private Long restaurant;
-    
 
     public Long getId() {
         return id;
@@ -130,6 +128,6 @@ public class DishResponse implements Serializable {
     public String toString() {
         return "Dish [name=" + name + ", price=" + price + ", category=" + category + ", restaurant=" + restaurant
                 + "]";
-    }    
+    }
 
 }

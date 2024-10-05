@@ -61,14 +61,15 @@ public class Location extends PanacheEntityBase {
         if (obj == null || getClass() != obj.getClass())
             return false;
         Location other = (Location) obj;
-        return Double.compare(this.longitude, other.longitude) == 0 && Double.compare(this.latitude, other.latitude) == 0;
+        return Double.compare(this.longitude, other.longitude) == 0
+                && Double.compare(this.latitude, other.latitude) == 0;
     }
 
     @Override
     public String toString() {
         return "Location [longitude=" + longitude + ", latitude=" + latitude + "]";
     }
- 
+
     public String convertLatitudeToDMS() {
         return convertToDMS(latitude, true);
     }
@@ -76,7 +77,7 @@ public class Location extends PanacheEntityBase {
     public String convertLongitudeToDMS() {
         return convertToDMS(longitude, false);
     }
-     
+
     private String convertToDMS(double coordinate, boolean isLatitude) {
         // Obtendo o símbolo de direção
         String direction;
@@ -121,6 +122,5 @@ public class Location extends PanacheEntityBase {
         // Aplicando o sinal negativo, se necessário
         return isNegative ? -decimal : decimal;
     }
-
 
 }

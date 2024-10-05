@@ -30,14 +30,16 @@ import jakarta.ws.rs.core.Response;
 public class RestaurantResources {
 
     @GET
-     public List<RestaurantResponse> findAll() {
-        return Restaurant.findAll().stream().map( r -> (Restaurant)r).map(RestaurantMapper::mapToDto).collect(Collectors.toList());
+    public List<RestaurantResponse> findAll() {
+        return Restaurant.findAll().stream().map(r -> (Restaurant) r).map(RestaurantMapper::mapToDto)
+                .collect(Collectors.toList());
     }
 
     @GET
     @Path("/{id}")
     public RestaurantResponse findById(Long id) {
-        return Restaurant.findByIdOptional(id).map( r -> (Restaurant)r).map(RestaurantMapper::mapToDto).orElseThrow(NotFoundException::new);
+        return Restaurant.findByIdOptional(id).map(r -> (Restaurant) r).map(RestaurantMapper::mapToDto)
+                .orElseThrow(NotFoundException::new);
     }
 
     @POST
@@ -45,15 +47,15 @@ public class RestaurantResources {
     public Response create(@Valid RestaurantRequest restaurant) {
         Restaurant mapToEntity = RestaurantMapper.mapToEntity(restaurant);
         Restaurant.persist(mapToEntity);
-        return Response.status(HttpServletResponse.SC_CREATED).location(URI.create(ResourcePaths.RESTAURANTS + "/" + mapToEntity.id)).build();
+        return Response.status(HttpServletResponse.SC_CREATED)
+                .location(URI.create(ResourcePaths.RESTAURANTS + "/" + mapToEntity.id)).build();
     }
-
 
     @PUT
     @Path("/{id}")
     @Transactional
     public void update(Long id, @Valid RestaurantRequest updatedRestaurant) {
-        Optional<Restaurant> optional  = Restaurant.findByIdOptional(id);
+        Optional<Restaurant> optional = Restaurant.findByIdOptional(id);
         if (!optional.isPresent()) {
             throw new NotFoundException();
         }
@@ -69,9 +71,10 @@ public class RestaurantResources {
     @Path("/{id}")
     public void delete(Long id) {
 
-        Optional<Restaurant> optional  = Restaurant.findByIdOptional(id);
-        optional.ifPresentOrElse(PanacheEntityBase::delete, () -> {throw new NotFoundException();});
+        Optional<Restaurant> optional = Restaurant.findByIdOptional(id);
+        optional.ifPresentOrElse(PanacheEntityBase::delete, () -> {
+            throw new NotFoundException();
+        });
     }
-
 
 }

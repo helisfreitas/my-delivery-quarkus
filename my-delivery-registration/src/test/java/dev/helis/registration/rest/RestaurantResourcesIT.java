@@ -17,7 +17,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.transaction.Transactional;
 
 @DBRider
-@DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE,  alwaysCleanBefore=true)
+@DBUnit(caseInsensitiveStrategy = Orthography.LOWERCASE, alwaysCleanBefore = true)
 @QuarkusTest
 @QuarkusTestResource(RegistrationTestLifecycleManager.class)
 @Tag("integration")
@@ -33,9 +33,9 @@ class RestaurantResourcesIT {
                 .when().get(ResourcePaths.RESTAURANTS)
                 .then()
                 .statusCode(200)
-                .extract().asString();  
+                .extract().asString();
 
-       JsonApprovals.verifyJson(response);
+        JsonApprovals.verifyJson(response);
     }
 
 }

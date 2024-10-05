@@ -75,5 +75,4 @@ public class Location implements Serializable {
         return "Location [longitude=" + longitude + ", latitude=" + latitude + "]";
     }
 
-    
 }

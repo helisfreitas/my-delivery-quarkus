@@ -15,15 +15,15 @@ public class RestaurantResponse implements java.io.Serializable {
     private String name;
 
     private Location location;
-  
+
     public RestaurantResponse(Long id, @NotBlank String owner, @NotBlank String name,
-            dev.helis.registration.entity.Location location) {         
-          this.id = id;
-          this.owner = owner;
-          this.name = name;
-          if(Objects.nonNull(location)) {
-             this.location = new Location(location.convertLongitudeToDMS(), location.convertLatitudeToDMS());
-          }
+            dev.helis.registration.entity.Location location) {
+        this.id = id;
+        this.owner = owner;
+        this.name = name;
+        if (Objects.nonNull(location)) {
+            this.location = new Location(location.convertLongitudeToDMS(), location.convertLatitudeToDMS());
+        }
     }
 
     public Long getId() {
@@ -57,7 +57,6 @@ public class RestaurantResponse implements java.io.Serializable {
     public void setLocation(Location location) {
         this.location = location;
     }
-
 
     @Override
     public int hashCode() {

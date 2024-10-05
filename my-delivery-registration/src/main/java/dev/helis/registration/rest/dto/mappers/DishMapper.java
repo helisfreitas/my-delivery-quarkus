@@ -10,7 +10,6 @@ import jakarta.ws.rs.core.UriBuilderException;
 
 public class DishMapper {
 
-
     private DishMapper() {
         // Private constructor to hide the implicit public one
     }
@@ -27,11 +26,11 @@ public class DishMapper {
         dish.setIsAvailable(entity.isAvailable);
         dish.setRestaurant(entity.restaurant.id);
 
-
         return dish;
     }
 
-    public static Dish mapToEntity(Restaurant restaurant, DishRequest dto) throws MalformedURLException, IllegalArgumentException, UriBuilderException {
+    public static Dish mapToEntity(Restaurant restaurant, DishRequest dto)
+            throws MalformedURLException, IllegalArgumentException, UriBuilderException {
 
         Dish dish = new Dish();
         dish.name = dto.getName();

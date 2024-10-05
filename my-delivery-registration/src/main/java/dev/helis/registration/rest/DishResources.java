@@ -35,36 +35,44 @@ public class DishResources {
 
     @GET
     public List<DishResponse> findAll(@PathParam("restaurantId") Long restaurantId) {
-        return Dish.list("restaurant.id", restaurantId).stream().map( r -> (Dish)r).map(DishMapper::mapToDto).collect(Collectors.toList());
+        return Dish.list("restaurant.id", restaurantId).stream().map(r -> (Dish) r).map(DishMapper::mapToDto)
+                .collect(Collectors.toList());
     }
 
     @GET
     @Path("/{id}")
     public DishResponse findById(@PathParam("restaurantId") Long restaurantId, @PathParam("id") Long id) {
-      return Dish.find(SELECT_FROM_DISH_WHERE_RESTAURANT_ID_AND_ID, restaurantId, id).singleResultOptional().map( r -> (Dish)r).map(DishMapper::mapToDto).orElseThrow(NotFoundException::new);
+        return Dish.find(SELECT_FROM_DISH_WHERE_RESTAURANT_ID_AND_ID, restaurantId, id).singleResultOptional()
+                .map(r -> (Dish) r).map(DishMapper::mapToDto).orElseThrow(NotFoundException::new);
     }
 
     @POST
     @Transactional
-    public Response create(@PathParam("restaurantId") Long restaurantId, @Valid DishRequest request) throws MalformedURLException, IllegalArgumentException, UriBuilderException {
-       
+    public Response create(@PathParam("restaurantId") Long restaurantId, @Valid DishRequest request)
+            throws MalformedURLException, IllegalArgumentException, UriBuilderException {
+
         Optional<Restaurant> restaurant = Restaurant.findByIdOptional(restaurantId);
         if (!restaurant.isPresent()) {
             throw new NotFoundException();
         }
 
-        Dish mapToEntity = DishMapper.mapToEntity(restaurant.get(),request);
+        Dish mapToEntity = DishMapper.mapToEntity(restaurant.get(), request);
         mapToEntity.restaurant = restaurant.get();
         mapToEntity.persist();
 
-        return Response.status(Response.Status.CREATED).location(URI.create(ResourcePaths.DISHES.replace("{restaurantId}", restaurantId.toString()) + "/" + mapToEntity.id)).build();
+        return Response.status(Response.Status.CREATED)
+                .location(URI.create(
+                        ResourcePaths.DISHES.replace("{restaurantId}", restaurantId.toString()) + "/" + mapToEntity.id))
+                .build();
     }
 
     @PUT
     @Path("/{id}")
     @Transactional
-    public Response update(@PathParam("restaurantId") Long restaurantId, @PathParam("id") Long id, @Valid DishRequest request) throws MalformedURLException, IllegalArgumentException, UriBuilderException {
-        Optional<Dish> optional  = Dish.find(SELECT_FROM_DISH_WHERE_RESTAURANT_ID_AND_ID, restaurantId, id).singleResultOptional();
+    public Response update(@PathParam("restaurantId") Long restaurantId, @PathParam("id") Long id,
+            @Valid DishRequest request) throws MalformedURLException, IllegalArgumentException, UriBuilderException {
+        Optional<Dish> optional = Dish.find(SELECT_FROM_DISH_WHERE_RESTAURANT_ID_AND_ID, restaurantId, id)
+                .singleResultOptional();
         if (!optional.isPresent()) {
             throw new NotFoundException();
         }
@@ -83,7 +91,8 @@ public class DishResources {
     @Path("/{id}")
     @Transactional
     public void delete(@PathParam("restaurantId") Long restaurantId, @PathParam("id") Long id) {
-        Optional<Dish> optional  = Dish.find(SELECT_FROM_DISH_WHERE_RESTAURANT_ID_AND_ID, restaurantId, id).singleResultOptional();
+        Optional<Dish> optional = Dish.find(SELECT_FROM_DISH_WHERE_RESTAURANT_ID_AND_ID, restaurantId, id)
+                .singleResultOptional();
         if (!optional.isPresent()) {
             throw new NotFoundException();
         }

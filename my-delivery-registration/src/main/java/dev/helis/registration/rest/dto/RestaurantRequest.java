@@ -19,7 +19,7 @@ public class RestaurantRequest implements java.io.Serializable {
     @OnlyCharacterAndPunctuation
     private String name;
 
-    @NotNull  
+    @NotNull
     private Location location;
 
     public RestaurantRequest() {
@@ -59,6 +59,6 @@ public class RestaurantRequest implements java.io.Serializable {
     @Override
     public String toString() {
         return "RestaurantRequest [owner=" + owner + ", name=" + name + ", location=" + location + "]";
-    }   
+    }
 
 }

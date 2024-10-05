@@ -20,15 +20,15 @@ public class RegistrationTestLifecycleManager implements QuarkusTestResourceLife
         proprieties.put("quarkus.datasource.jdbc.url", POSTGRES.getJdbcUrl());
         proprieties.put("quarkus.datasource.username", POSTGRES.getUsername());
         proprieties.put("quarkus.datasource.password", POSTGRES.getPassword());
-        
+
         return proprieties;
     }
 
     @Override
     public void stop() {
-       if(POSTGRES != null && POSTGRES.isRunning()) {
-           POSTGRES.stop();
-       }
+        if (POSTGRES != null && POSTGRES.isRunning()) {
+            POSTGRES.stop();
+        }
     }
-    
+
 }
