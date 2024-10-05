@@ -20,6 +20,14 @@ Thumbs.db
 *.runner
 *.lib
 
+### Eclipse IDE ###
+.project
+.settings
+.metadata/                    
+.recommenders/               
+*.launch                                       
+.classpath                                     
+bin/
 
 ### IntelliJ IDEA ###
 .idea
