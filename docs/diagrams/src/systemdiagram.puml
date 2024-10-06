@@ -1,0 +1,47 @@
+@startuml
+title My-Delivery System Architecture
+
+package "Web Clients" {
+  [User Client\n(Angular App)] 
+}
+
+package "Backend Quarkus" {
+  [Authentication Service] 
+  [Restaurant Management Service] 
+  [Marketplace Service] 
+  [Delivery Service] 
+}
+
+package "Database Layer" {
+  [PostgreSQL] 
+  [MongoDB] 
+}
+
+package "External Integrations" {
+  [Maps API] 
+  [SMS/Email Service]
+}
+
+package "Infrastructure" {
+  [Load Balancer] 
+  [Message Queue]
+}
+
+' Define interactions between components
+[User Client\n(Angular App)] --> [Authentication Service]
+[User Client\n(Angular App)] --> [Restaurant Management Service]
+[User Client\n(Angular App)] --> [Marketplace Service]
+[User Client\n(Angular App)] --> [Delivery Service]
+
+[Marketplace Service] --> [PostgreSQL]
+[Marketplace Service] --> [MongoDB]
+[Restaurant Management Service] --> [PostgreSQL]
+[Delivery Service] --> [MongoDB]
+
+[Delivery Service] --> [Maps API]
+[Marketplace Service] --> [SMS/Email Service]
+
+[User Client\n(Angular App)] --> [Load Balancer]
+
+[Marketplace Service] --> [Message Queue]
+@enduml

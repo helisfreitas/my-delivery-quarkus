@@ -12,7 +12,7 @@
     <artifactId>my-delivery-registration</artifactId>
     <version>0.0.1</version>
 
-    <name>Registration Api</name>
+    <name>Restaurant Management Service</name>
 
     <properties>
         <compiler-plugin.version>3.13.0</compiler-plugin.version>
